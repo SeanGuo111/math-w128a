@@ -1,0 +1,14 @@
+f1 = @(x) sin(x) - exp(-x);
+f1p = @(x) cos(x) + exp(-x);
+f2 = @(x) sin(x.^2)/(10+x.^2) - 0.02*exp(-x/10);
+f2p = @(x) ((2*x*cos(x.^2))*(10+x.^2)-(2*x*sin(x.^2)))/((10+x.^2).^2) + 0.002*exp(-x/10);
+
+zeros1 = findmanyzeros(f1, 0, 10, 50, 10^-10);
+ext1 = findmanyzeros(f1p, 0, 10, 50, 10^-10);
+x = 0:0.001:10;
+hold on
+grid on
+plot(x, f1(x), "b", [0,10], [0,0], "r")
+plot(zeros1, f1(zeros1), "ok", MarkerSize=10, LineWidth=1)
+plot(ext1, f1(ext1), "m^", MarkerSize=10, LineWidth=1)
+legend("f_1(x)", "y=0", "Zeros", "Extrema", Location="southeast", {fontsize="12"})

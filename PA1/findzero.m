@@ -1,0 +1,27 @@
+function p = findzero(f, a, b, tol)
+% Solve for a zero of f between a and b to a tolerance tol using a variant
+% of the bisection and secant methods.
+w = 1;
+fprintf(' n         a             b             p           f(p)    \n');
+fprintf('-----------------------------------------------------------\n');
+
+for i = 1:99
+    num = w*f(a)*(a-b);
+    denom = f(b) - w*f(a);
+    p = a + num / denom;
+    fprintf('%2d  %12.8f  %12.8f  %12.8f  %12.8f\n', i, a, b, p, f(p));
+    
+    if f(p)*f(b) > 0
+        w = 0.5;
+    else
+        w = 1;
+        a = b;
+    end
+    b = p;
+
+    if abs(b-a) < tol || abs(f(p)) < tol
+        break
+    end
+
+end
+end
