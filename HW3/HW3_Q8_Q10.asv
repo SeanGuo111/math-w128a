@@ -1,0 +1,5 @@
+% Using ncspline and ccspline
+% Q8:
+x = [0.1,0.2,0.3];
+a = [-0.29004996,-0.56079734,-0.81401972];
+[b, c, d] = ncspline(x,a)
