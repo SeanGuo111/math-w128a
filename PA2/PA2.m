@@ -30,6 +30,8 @@ for i = 1:2
         end
         pn(i) = pn1(i);
     end
+
+    
 end
 t1 = pn(1);
 t2 = pn(2);
